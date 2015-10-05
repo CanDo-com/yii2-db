@@ -1,0 +1,21 @@
+{
+    "name": "cando/yii2-db",
+    "description": "Database-related helpers for Yii2 framework",
+    "keywords": ["yii2", "database"],
+    "authors": [
+        {
+            "name": "Sergiy Misyura",
+            "email": "sergiy@cando.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "yiisoft/yii2": ">=2.0.6",
+		"yiisoft/yii2-gii": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cando\\db\\": ""
+        }
+    }
+}
