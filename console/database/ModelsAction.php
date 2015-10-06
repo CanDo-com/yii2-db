@@ -36,7 +36,7 @@ class ModelsAction extends Action
 				' --interactive=0' .
 				' --tableName=' . $tableName .
 				' --modelClass=' . $baseModelName .
-				' --ns=' . $baseNs .
+				' --ns="' . $baseNs . '"' .
 				' --db=' . $this->db;
 
 			echo $cmd . "\n";
