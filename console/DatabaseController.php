@@ -20,8 +20,8 @@ class DatabaseController extends Controller
 	public function actions()
 	{
 		return [
-			'create' => '\cando\db\console\database\CreateAction',
-			'models' => '\cando\db\console\database\ModelsAction',
+			'create' => '\cando\database\console\database\CreateAction',
+			'models' => '\cando\database\console\database\ModelsAction',
 		];
 	}
 }
