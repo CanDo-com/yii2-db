@@ -1,4 +1,8 @@
 <?php
+/**
+ * @link http://www.cando.com/
+ * @copyright Copyright (c) 2015 Advertical LLC dba CanDo
+ */
 
 namespace cando\database\console\database;
 
@@ -6,11 +10,29 @@ use Yii;
 use yii\base\Action;
 use yii\db\Connection;
 
+/**
+ * A wrapper for Gii model generator.
+ *
+ * It creates two files per database table - a "base" file that contains all auto-generated content, this file will be
+ * overridden every time the model generator is called, and the model class which can be modified by the developers,
+ * it will only be generated if it does not exist.
+ *
+ * This way you can update model classes when the database schema is changed without losing the custom hand-written
+ * code.
+ *
+ * @author Sergiy Misyura <sergiy@cando.com>
+ */
 class ModelsAction extends Action
 {
+	/**
+	 * @var string ID
+	 */
 	public $db = 'db';
 	public $ns = 'app\models';
 
+	/**
+	 * Iterates through database tables and invokes Gii model generator for each of them
+	 */
 	public function run()
 	{
 		/**
@@ -75,6 +97,13 @@ class ModelsAction extends Action
 		}
 	}
 
+	/**
+	 * Generates a name for the model class based on the table name
+	 *
+	 * @param   string  $tableName  Table name
+	 *
+	 * @return  string  Model name
+	 */
 	private function generateModelName($tableName)
 	{
 		$parts = explode('_', $tableName);

@@ -10,6 +10,8 @@ use Yii;
 use yii\console\Controller;
 
 /**
+ * Provides several helpers that (supposedly) make your work with the database easier.
+ *
  * @author Sergiy Misyura <sergiy@cando.com>
  */
 class DatabaseController extends Controller
