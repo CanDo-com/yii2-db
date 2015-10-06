@@ -30,12 +30,14 @@ class ModelsAction extends Action
 			$baseModelName = $modelName . 'Base';
 
 			$cmd = 'php yii gii/model' .
+				' --interactive=0' .
 				' --tableName=' . $tableName .
 				' --modelName=' . $baseModelName .
-				' --ns=' . $this->ns .
+				' --ns=' . $baseNs .
 				' --db=' . $this->db;
 
 			echo $cmd . "\n";
+			passthru($cmd);
 		}
 	}
 
