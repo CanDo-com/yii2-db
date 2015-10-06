@@ -1,0 +1,9 @@
+<?php
+
+namespace ##ns##;
+
+use ##ns##\base\##model##Base;
+
+class ##model## extends ##model##Base
+{
+}

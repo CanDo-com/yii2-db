@@ -24,6 +24,9 @@ class ModelsAction extends Action
 
 		$baseNs = $this->ns . '\\base';
 
+		$path = Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/';
+		$template = file_get_contents(__DIR__ . '/models/template.txt');
+
 		foreach ($dbConnection->schema->getTableNames() as $tableName)
 		{
 			$modelName = $this->generateModelName($tableName);
@@ -32,12 +35,19 @@ class ModelsAction extends Action
 			$cmd = 'php yii gii/model' .
 				' --interactive=0' .
 				' --tableName=' . $tableName .
-				' --modelName=' . $baseModelName .
+				' --modelClass=' . $baseModelName .
 				' --ns=' . $baseNs .
 				' --db=' . $this->db;
 
 			echo $cmd . "\n";
 			passthru($cmd);
+
+			$modelFile = $path . $modelName . '.php';
+			if (!file_exists($modelFile))
+			{
+				$content = str_replace('##ns##', $this->ns, str_replace('##model##', $modelName, $template));
+				file_put_contents($modelFile, $content);
+			}
 		}
 	}
 
