@@ -11,7 +11,7 @@ use yii\base\Action;
 use yii\console\Exception;
 
 /**
- * [To be implemented] Creates a new 'dev' database from the starting script and existing migrations.
+ * To be implemented. Creates a new 'dev' database from the starting script and existing migrations.
  *
  * @author Sergiy Misyura <sergiy@cando.com>
  */
