@@ -48,7 +48,23 @@ class ModelsAction extends Action
 			$baseContent = file_get_contents($baseModelFile);
 			$matches = [];
 			preg_match_all('/@property ([A-Z]\\w+)/', $baseContent, $matches);
-			var_dump($matches); die();
+
+			$classes = [];
+
+			foreach ($matches[1] as $match)
+			{
+				$classes[$match] = true;
+			}
+
+			$useStatements = ['use Yii;'];
+
+			foreach (array_keys($classes) as $className)
+			{
+				$useStatements[] = 'use ' . $this->ns . '\\' . $className . ';';
+			}
+
+			$baseContent = str_replace('use Yii;', implode("\n", $useStatements), $baseContent);
+			file_put_contents($baseModelFile, $baseContent);
 
 			$modelFile = $path . $modelName . '.php';
 			if (!file_exists($modelFile))
