@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2015 Advertical LLC dba CanDo
  */
 
-namespace cando\db;
+namespace cando\database;
 
 use Yii;
 use yii\base\BootstrapInterface;
@@ -23,9 +23,14 @@ class Module extends \yii\base\Module implements BootstrapInterface
 		if ($app instanceof Application)
 		{
 			$app->controllerMap[$this->id] = [
-				'class' => '\cando\db\console\DatabaseController',
-				'module' => $this,
+				'class' => '\cando\database\console\DatabaseController',
+				'module' => $app,
 			];
 		}
+	}
+
+	public function getControllerPath()
+	{
+		return '@vendor/cando/database/console';
 	}
 }
